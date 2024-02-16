@@ -7,7 +7,9 @@ services:
     command: sh -c "mkdir -p /certs/${ROOT_DIR}; mkdir -p /certs/${DOMAIN}"
 
   ca:
-    image: paulczar/omgwtfssl
+    build:
+      context: .
+      dockerfile: ./Docker/omgwtfssl/Dockerfile
     container_name: ${CA_NAME}
     depends_on:
     - mkdir
